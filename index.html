@@ -176,6 +176,25 @@ section.alt{background:var(--soft)}
 .link:hover{text-decoration:underline}
 @media (max-width:820px){.info{grid-template-columns:1fr}}
 
+
+/* comer */
+.eat{display:grid;grid-template-columns:1fr 1.35fr;gap:24px;margin-top:32px;align-items:start}
+.eat>*{min-width:0}
+.places{display:flex;flex-direction:column;gap:12px}
+.place{display:flex;gap:16px;align-items:flex-start;text-align:left;font:inherit;color:inherit;background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:18px 20px;cursor:pointer;width:100%}
+.place:hover{border-color:var(--c)}
+.place[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 25%,transparent)}
+.pin{flex:none;width:40px;height:40px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px}
+.place h3{font-size:17px;font-weight:700}
+.place p{color:var(--muted);font-size:14px;margin-top:4px}
+.place .go{display:inline-block;margin-top:8px;font-size:14px;font-weight:600;color:var(--blue-t);text-decoration:none}
+.place .go:hover{text-decoration:underline}
+.mapbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mapbox iframe{display:block;width:100%;height:440px;border:0}
+.mapcap{padding:12px 18px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+.mapcap b{color:var(--fg)}
+@media (max-width:900px){.eat{grid-template-columns:1fr}.mapbox iframe{height:340px}}
+
 /* footer */
 footer{padding-block:48px 40px;border-top:1px solid var(--line)}
 .logos{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;background:var(--plate);border-radius:var(--r);padding:22px}
@@ -195,6 +214,7 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
       <a href="#programa">Programa</a>
       <a href="#ponentes">Ponentes</a>
       <a href="#trabajos">Envío de trabajos</a>
+      <a href="#comer">Dónde comer</a>
       <a href="#informacion" class="cta">Cómo llegar</a>
     </div>
   </div>
@@ -384,6 +404,34 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
   </div>
 </section>
 
+<section class="block alt" id="comer">
+  <div class="wrap">
+    <div class="eyebrow" style="--c:var(--green-t)">Pausa para comer · 14:00 – 16:00</div>
+    <h2>Dónde comer en el campus</h2>
+    <p class="intro">Tres cafeterías a pocos pasos de la sede. Pulsa en cada una para verla en el mapa.</p>
+    <div class="eat">
+      <div class="places">
+        <div class="place" role="button" tabindex="0" style="--c:var(--orange)" data-q="Facultad de Ciencias del Deporte, Universidad de Extremadura, Cáceres" data-n="Facultad de Ciencias del Deporte" aria-pressed="true">
+          <div class="pin">1</div>
+          <div><h3>Cafetería · Facultad de Ciencias del Deporte</h3><p>Cafetería en la propia sede del simposio. La opción más cómoda.</p><a class="go" href="https://www.google.com/maps/dir/?api=1&destination=Facultad%20de%20Ciencias%20del%20Deporte%2C%20Universidad%20de%20Extremadura%2C%20C%C3%A1ceres" target="_blank" rel="noopener">Cómo llegar →</a></div>
+        </div>
+        <div class="place" role="button" tabindex="0" style="--c:var(--blue)" data-q="Facultad de Veterinaria, Universidad de Extremadura, Cáceres" data-n="Facultad de Veterinaria" aria-pressed="false">
+          <div class="pin">2</div>
+          <div><h3>Cafetería · Facultad de Veterinaria</h3><p>Cafetería en el Campus Universitario (Avenida de las Ciencias).</p><a class="go" href="https://www.google.com/maps/dir/?api=1&destination=Facultad%20de%20Veterinaria%2C%20Universidad%20de%20Extremadura%2C%20C%C3%A1ceres" target="_blank" rel="noopener">Cómo llegar →</a></div>
+        </div>
+        <div class="place" role="button" tabindex="0" style="--c:var(--green-t)" data-q="Facultad de Derecho, Universidad de Extremadura, Cáceres" data-n="Facultad de Derecho" aria-pressed="false">
+          <div class="pin">3</div>
+          <div><h3>Cafetería · Facultad de Derecho</h3><p>Cafetería en el Campus Universitario (Avenida de las Letras).</p><a class="go" href="https://www.google.com/maps/dir/?api=1&destination=Facultad%20de%20Derecho%2C%20Universidad%20de%20Extremadura%2C%20C%C3%A1ceres" target="_blank" rel="noopener">Cómo llegar →</a></div>
+        </div>
+      </div>
+      <div class="mapbox">
+        <iframe id="map" title="Mapa de las cafeterías del campus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Facultad%20de%20Ciencias%20del%20Deporte%2C%20Universidad%20de%20Extremadura%2C%20C%C3%A1ceres&z=16&output=embed"></iframe>
+        <div class="mapcap">En el mapa: <b id="mapname">Facultad de Ciencias del Deporte</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="informacion">
   <div class="wrap">
     <div class="eyebrow" style="--c:var(--orange-t)">Información práctica</div>
@@ -426,6 +474,10 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
   var box=document.getElementById('count');
   if(d>0){document.getElementById('days').textContent=d;document.getElementById('dlabel').textContent=d===1?'día para el simposio':'días para el simposio';box.hidden=false;}
   else if(d===0){document.getElementById('days').textContent='Hoy';document.getElementById('dlabel').textContent='¡te esperamos!';box.hidden=false;}
+
+  var map=document.getElementById('map'),mn=document.getElementById('mapname'),ps=document.querySelectorAll('.place');
+  function pick(el){ps.forEach(function(p){p.setAttribute('aria-pressed',p===el?'true':'false')});map.src='https://maps.google.com/maps?q='+encodeURIComponent(el.dataset.q)+'&z=16&output=embed';mn.textContent=el.dataset.n;}
+  ps.forEach(function(p){p.addEventListener('click',function(e){if(e.target.closest('a'))return;pick(p)});p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(p)}})});
   var btn=document.getElementById('copyBtn'),mail=document.getElementById('mail');
   btn.addEventListener('click',function(){
     var t=mail.textContent;
