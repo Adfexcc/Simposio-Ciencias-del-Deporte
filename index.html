@@ -86,6 +86,13 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 @media (max-width:820px){.facts{grid-template-columns:1fr 1fr}}
 @media (max-width:420px){.facts{grid-template-columns:1fr}}
 
+
+.notice{display:flex;gap:18px;align-items:flex-start;margin-top:20px;background:var(--red);color:#fff;border-radius:var(--r);padding:20px 24px}
+.notice .nicon{flex:none;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;font-size:22px}
+.notice strong{display:block;font-size:20px;font-weight:800;letter-spacing:.2px}
+.notice p{margin-top:4px;font-size:15.5px;line-height:1.55;color:#FBE9EA}
+.notice b{color:#fff}
+
 /* sections */
 section.block{padding-block:72px}
 section.alt{background:var(--soft)}
@@ -245,6 +252,13 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
       <div class="fact"><small>Lugar</small><strong>Facultad de Ciencias del Deporte, Cáceres</strong></div>
       <div class="fact"><small>Horario</small><strong>De 09:30 a 18:00</strong></div>
       <div class="fact"><small>Envío de trabajos</small><strong>Hasta el 17 de noviembre, 23:59 h</strong></div>
+    </div>
+    <div class="notice" role="note">
+      <div class="nicon" aria-hidden="true">⏳</div>
+      <div>
+        <strong>Últimos días de inscripción</strong>
+        <p>Inscríbete ahora para tener tu <b>acreditación oficial</b> y tu <b>certificado de asistencia</b>. Fuera de plazo podrás asistir al simposio, pero sin acreditación oficial ni certificado de asistencia.</p>
+      </div>
     </div>
   </div>
 </header>
