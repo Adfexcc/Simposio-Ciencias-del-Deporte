@@ -197,6 +197,29 @@ section.alt{background:var(--soft)}
 @media (max-width:820px){.info{grid-template-columns:1fr}}
 
 
+
+.menu{display:grid;grid-template-columns:1fr 320px;gap:24px;margin-top:32px;align-items:stretch}
+.menu>*{min-width:0}
+.menu-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px 30px}
+.menu-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;padding-bottom:18px;border-bottom:1px dashed var(--line)}
+.menu-top span{font-size:30px;font-weight:800;letter-spacing:-.5px}
+.menu-top b{font-size:15px;font-weight:600;color:var(--muted)}
+.menu-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}
+.course{min-width:0}
+.course h3{font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--c)}
+.course h3.mt{margin-top:18px}
+.course ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.course li{font-size:16px;line-height:1.4;padding-left:16px;position:relative}
+.course li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--c)}
+.menu-cta{background:var(--fg);color:var(--bg);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.price b{display:block;font-size:64px;font-weight:800;line-height:1;color:var(--yellow);font-variant-numeric:tabular-nums}
+.price span{font-size:15px;font-weight:600;opacity:.85}
+.menu-cta p{font-size:15px;opacity:.9}
+.menu-cta .btn{justify-content:center;white-space:nowrap;padding:13px 18px}
+.sub-h{font-size:24px;font-weight:700;margin-top:56px}
+@media (max-width:900px){.menu{grid-template-columns:1fr}.menu-cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.menu-cols{grid-template-columns:1fr}.menu-card{padding:22px}}
+
 /* comer */
 .eat{display:grid;grid-template-columns:1fr 1.35fr;gap:24px;margin-top:32px;align-items:start}
 .eat>*{min-width:0}
@@ -318,7 +341,7 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
       </article>
       <article class="ev pause" style="--c:var(--yellow)">
         <time>14:00 – 16:00</time>
-        <div><span class="tag" style="color:var(--muted)">Pausa</span><h3>Comida</h3></div>
+        <div><span class="tag" style="color:var(--muted)">Pausa</span><h3>Comida</h3><p>Comida oficial: 12 € por persona, con inscripción previa. <a href="#comer" style="color:var(--blue-t);font-weight:600">Ver menú →</a></p></div>
       </article>
       <article class="ev" style="--c:var(--blue-t)">
         <time>16:00 – 17:00</time>
@@ -451,8 +474,37 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
 <section class="block alt" id="comer">
   <div class="wrap">
     <div class="eyebrow" style="--c:var(--green-t)">Pausa para comer · 14:00 – 16:00</div>
-    <h2>Dónde comer en el campus</h2>
-    <p class="intro">Tres cafeterías a pocos pasos de la sede. Pulsa en cada una para verla en el mapa.</p>
+    <h2>Comida oficial del simposio</h2>
+    <p class="intro">Comparte la sobremesa con ponentes, organización y participantes. Plazas con inscripción previa.</p>
+    <div class="menu">
+      <div class="menu-card">
+        <div class="menu-top"><span>Menú</span><b>Viernes, 27 de noviembre · 14:00</b></div>
+        <div class="menu-cols">
+          <div class="course" style="--c:var(--orange-t)">
+            <h3>Primeros</h3>
+            <ul><li>Paella de marisco</li><li>Ensalada de canónigos con rulo de cabra, nueces y crema de Módena</li><li>Bacalao a la dorada</li></ul>
+          </div>
+          <div class="course" style="--c:var(--blue-t)">
+            <h3>Segundos</h3>
+            <ul><li>Cazón al horno con guarnición de patata</li><li>Magro en salsa con champiñones y patatas fritas</li><li>Albóndigas en salsa de tomate con guisantes y patatas fritas</li></ul>
+          </div>
+          <div class="course" style="--c:var(--green-t)">
+            <h3>Postre</h3>
+            <ul><li>Fruta</li><li>Flan de vainilla</li></ul>
+            <h3 class="mt">Bebida</h3>
+            <ul><li>Agua</li></ul>
+          </div>
+        </div>
+      </div>
+      <aside class="menu-cta">
+        <div class="price"><b>12 €</b><span>por persona</span></div>
+        <p>Reserva tu plaza en el formulario de inscripción a la comida.</p>
+        <a class="btn" href="https://forms.gle/5JrQEnN4LsxUfTwD6" target="_blank" rel="noopener" style="background:var(--yellow);color:var(--on-yellow);border-color:var(--yellow)">Inscribirme a la comida ↗</a>
+      </aside>
+    </div>
+
+    <h3 class="sub-h">Otras opciones en el campus</h3>
+    <p class="intro">Si prefieres comer por tu cuenta, tienes tres cafeterías a pocos pasos de la sede. Pulsa en cada una para verla en el mapa.</p>
     <div class="eat">
       <div class="places">
         <div class="place" role="button" tabindex="0" style="--c:var(--orange)" data-q="Facultad de Ciencias del Deporte, Universidad de Extremadura, Cáceres" data-n="Facultad de Ciencias del Deporte" aria-pressed="true">
