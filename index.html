@@ -117,6 +117,7 @@ section.alt{background:var(--soft)}
 .ev li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--c)}
 .ev li b{color:var(--fg);font-weight:600}
 .ev.pause h3{color:var(--muted);font-weight:600}
+.coms li{display:block}.coms .ct{display:inline-block;min-width:52px;font-weight:700;color:var(--fg);font-variant-numeric:tabular-nums}.coms i{color:var(--fg);font-style:normal}.ctema{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--c);margin-left:4px}
 @media (max-width:640px){.ev{grid-template-columns:1fr;gap:6px}}
 
 /* speakers */
@@ -289,7 +290,7 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     <div class="facts">
       <div class="fact"><small>Fecha</small><strong>Viernes, 27 de noviembre de 2026</strong></div>
       <div class="fact"><small>Lugar</small><strong>Facultad de Ciencias del Deporte, Cáceres</strong></div>
-      <div class="fact"><small>Horario</small><strong>De 09:30 a 18:00</strong></div>
+      <div class="fact"><small>Horario</small><strong>De 09:15 a 18:15</strong></div>
       <div class="fact"><small>Inscripciones</small><strong>Extraordinarias abiertas (trabajos: cerrado)</strong></div>
     </div>
     <div class="notice" role="note">
@@ -307,12 +308,16 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
 <section class="block alt" id="programa">
   <div class="wrap">
     <div class="eyebrow" style="--c:var(--blue-t)">Programa</div>
-    <h2>Una jornada, de 09:30 a 18:00</h2>
+    <h2>Una jornada, de 09:15 a 18:15</h2>
     <p class="intro">Dos ponencias plenarias, dos mesas redondas, comunicaciones orales y pósteres científicos.</p>
     <div class="ctas" style="margin-top:20px"><a class="btn primary" href="programa-simposio.pdf" target="_blank" rel="noopener">Descargar programa (PDF) ↓</a></div>
     <div class="prog">
+      <article class="ev pause" style="--c:var(--yellow)">
+        <time>09:15 – 09:45</time>
+        <div><span class="tag" style="color:var(--muted)">Acreditaciones</span><h3>Recogida de acreditaciones</h3><p>Mesa de acreditaciones en el hall de la Facultad.</p></div>
+      </article>
       <article class="ev" style="--c:var(--orange-t)">
-        <time>09:30 – 10:00</time>
+        <time>09:45 – 10:15</time>
         <div><span class="tag">Apertura</span><h3>Presentación oficial y apertura del congreso</h3>
           <ul>
             <li><b>D. Tomás García Calvo</b>, Decano de la Facultad de Ciencias del Deporte y Director del Grupo ACAFYDE.</li>
@@ -321,20 +326,27 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
           </ul></div>
       </article>
       <article class="ev" style="--c:var(--red-t)">
-        <time>10:00 – 11:00</time>
+        <time>10:15 – 11:15</time>
         <div><span class="tag">Ponencia plenaria</span><h3>D. Carlos del Barrio Fernández</h3>
           <p>Health &amp; Performance Director. Head of Sport Science, Atlético de Madrid (2014–2026). Associate Professor, CEU San Pablo.</p></div>
       </article>
       <article class="ev pause" style="--c:var(--yellow)">
-        <time>11:00 – 11:30</time>
+        <time>11:15 – 11:45</time>
         <div><span class="tag" style="color:var(--muted)">Pausa</span><h3>Coffee break y sesión de pósteres</h3><p>Hall de la Facultad.</p></div>
       </article>
       <article class="ev" style="--c:var(--green-t)">
-        <time>11:30 – 12:30</time>
-        <div><span class="tag">Comunicaciones</span><h3>Comunicaciones orales</h3><p>Salón de actos.</p></div>
+        <time>11:45 – 12:45</time>
+        <div><span class="tag">Comunicaciones</span><h3>Comunicaciones orales</h3><p>Salón de actos. 8 minutos de exposición + 2 minutos de preguntas por comunicación.</p>
+          <ul class="coms">
+            <li><span class="ct">11:45</span><b>Dra. Dña. Carmen Crespo Coco</b> · <i>Sueño y función autonómica en nadadores de élite: diferencias entre sexos a lo largo de una temporada competitiva</i> <span class="ctema">Entrenamiento</span></li>
+            <li><span class="ct">11:55</span><b>D. Jesús Díaz García</b> · <i>Effects of an 8-week Brain Endurance Training intervention on cognitive performance in participants aged over 65 years old from rural areas: The EMPICATExt Project</i> <span class="ctema">Salud</span></li>
+            <li><span class="ct">12:05</span><b>Dña. Emma Almendro Parejo</b> · <i>Educación Física e Inclusión: Actitudes de los profesores de Educación Física actuales y futuros de Extremadura hacia los alumnos con discapacidad</i> <span class="ctema">Educación Física</span></li>
+            <li><span class="ct">12:15</span><b>D. Álvaro Medina Sánchez</b> · <i>¿Qué marcadores reflejan mejor la carga competitiva? Comparación entre biomarcadores sanguíneos, termografía infrarroja y variables neuromusculares en futbolistas semiprofesionales</i> <span class="ctema">Entrenamiento</span></li>
+            <li><span class="ct">12:25</span><b>D. Manuel García Rodríguez</b> · <i>Comparación de los efectos de la hipertermia y el entrenamiento multicomponente sobre la variabilidad de la frecuencia cardiaca y la calidad del sueño en mujeres postmenopáusicas</i> <span class="ctema">Salud</span></li>
+          </ul></div>
       </article>
       <article class="ev" style="--c:var(--blue-t)">
-        <time>12:30 – 14:00</time>
+        <time>12:45 – 14:15</time>
         <div><span class="tag">Mesa redonda · Deportes individuales</span><h3 class="q">«De la educación al rendimiento. Construcción integral del deportista»</h3>
           <ul>
             <li><b>Dra. Dña. Carmen Crespo Coco</b> · Triatlón y paratriatlón</li>
@@ -345,16 +357,16 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
           </ul></div>
       </article>
       <article class="ev pause" style="--c:var(--yellow)">
-        <time>14:00 – 16:00</time>
+        <time>14:15 – 16:15</time>
         <div><span class="tag" style="color:var(--muted)">Pausa</span><h3>Comida</h3><p>Comida oficial: 12 € por persona, con inscripción previa. <a href="#comer" style="color:var(--blue-t);font-weight:600">Ver menú →</a></p></div>
       </article>
       <article class="ev" style="--c:var(--blue-t)">
-        <time>16:00 – 17:00</time>
+        <time>16:15 – 17:15</time>
         <div><span class="tag">Ponencia plenaria</span><h3>D. Juan Carlos Gordillo</h3>
           <p>Miembro del Área de Análisis del Sevilla Fútbol Club. Analista en Fútbol.</p></div>
       </article>
       <article class="ev" style="--c:var(--orange-t)">
-        <time>17:00 – 18:00</time>
+        <time>17:15 – 18:15</time>
         <div><span class="tag">Mesa redonda · Fútbol</span><h3 class="q">«Innovación y nuevos avances en el entrenamiento en fútbol»</h3>
           <ul>
             <li><b>D. José Carlos Ponce Bordón</b> · Preparación física y análisis de datos</li>
@@ -365,7 +377,7 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
           </ul></div>
       </article>
       <article class="ev" style="--c:var(--red-t)">
-        <time>18:00</time>
+        <time>18:15</time>
         <div><span class="tag">Clausura</span><h3>Clausura y entrega de premios</h3><p>Premios a la Mejor Comunicación Oral y al Mejor Póster Científico, en colaboración con el Albergue Pundak (Cabezuela del Valle).</p></div>
       </article>
     </div>
@@ -385,7 +397,7 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
           <h3>D. Carlos del Barrio Fernández</h3>
           <div class="role">Health &amp; Performance Director</div>
           <p>Head of Sport Science, Atlético de Madrid (2014–2026). Founder. Associate Professor, CEU San Pablo. NSCA CSCS® &amp; CPSS®.</p>
-          <span class="slot">Ponencia plenaria · 10:00</span>
+          <span class="slot">Ponencia plenaria · 10:15</span>
         </div>
       </article>
       <article class="key" style="--c:var(--blue);--c-t:var(--blue-t)">
@@ -394,14 +406,14 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
           <h3>D. Juan Carlos Gordillo</h3>
           <div class="role">Área de Análisis · Sevilla FC</div>
           <p>Graduado en Ciencias de la Actividad Física y del Deporte por la Universidad Pablo de Olavide. Máster en Big Data aplicado a la Preparación Física en Fútbol.</p>
-          <span class="slot">Ponencia plenaria · 16:00</span>
+          <span class="slot">Ponencia plenaria · 16:15</span>
           <img class="club" src="img/sfc.png" alt="Sevilla Fútbol Club">
         </div>
       </article>
     </div>
 
     <div class="mesa">
-      <div class="mesa-h"><h3>Mesa redonda · Deportes individuales</h3><span class="slot">12:30 – 14:00</span></div>
+      <div class="mesa-h"><h3>Mesa redonda · Deportes individuales</h3><span class="slot">12:45 – 14:15</span></div>
       <p class="q">«De la educación al rendimiento. Construcción integral del deportista»</p>
       <div class="grid4">
         <article class="sp" style="--c:var(--orange);--c-t:var(--orange-t)"><img class="ph" src="img/carmen.jpg" alt="Dra. Dña. Carmen Crespo Coco"><h4>Dra. Dña. Carmen Crespo Coco</h4><div class="disc">Triatlón · Paratriatlón</div><p>Doctora en Ciencias del Deporte y profesora de la Facultad. Entrenadora de alto rendimiento de deportistas de resistencia.</p></article>
@@ -413,7 +425,7 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     </div>
 
     <div class="mesa">
-      <div class="mesa-h"><h3>Mesa redonda · Fútbol</h3><span class="slot">17:00 – 18:00</span></div>
+      <div class="mesa-h"><h3>Mesa redonda · Fútbol</h3><span class="slot">17:15 – 18:15</span></div>
       <p class="q">«Innovación y nuevos avances en el entrenamiento en fútbol»</p>
       <div class="grid4">
         <article class="sp" style="--c:var(--blue);--c-t:var(--blue-t)"><img class="ph" src="img/ponce.jpg" alt="D. José Carlos Ponce Bordón"><h4>D. José Carlos Ponce Bordón</h4><div class="disc">Preparación física · Datos</div><p>Doctor en Ciencias del Deporte e investigador en la Universidad de Castilla-La Mancha. Ex-Diocesano, ex-Mérida y CD Coria.</p></article>
@@ -470,20 +482,20 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     </div>
 
     <div class="prize">
-      <div class="card"><div class="medal">1</div><div><h3>Mejor Comunicación Oral</h3><p style="color:var(--muted);font-size:15px">En colaboración con el <b style="color:var(--fg)">Albergue Pundak</b> (Cabezuela del Valle). Se entrega en la clausura, a las 18:00.</p></div></div>
-      <div class="card"><div class="medal">1</div><div><h3>Mejor Póster Científico</h3><p style="color:var(--muted);font-size:15px">En colaboración con el <b style="color:var(--fg)">Albergue Pundak</b> (Cabezuela del Valle). Se entrega en la clausura, a las 18:00.</p></div></div>
+      <div class="card"><div class="medal">1</div><div><h3>Mejor Comunicación Oral</h3><p style="color:var(--muted);font-size:15px">En colaboración con el <b style="color:var(--fg)">Albergue Pundak</b> (Cabezuela del Valle). Se entrega en la clausura, a las 18:15.</p></div></div>
+      <div class="card"><div class="medal">1</div><div><h3>Mejor Póster Científico</h3><p style="color:var(--muted);font-size:15px">En colaboración con el <b style="color:var(--fg)">Albergue Pundak</b> (Cabezuela del Valle). Se entrega en la clausura, a las 18:15.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="block alt" id="comer">
   <div class="wrap">
-    <div class="eyebrow" style="--c:var(--green-t)">Pausa para comer · 14:00 – 16:00</div>
+    <div class="eyebrow" style="--c:var(--green-t)">Pausa para comer · 14:15 – 16:15</div>
     <h2>Comida oficial del simposio</h2>
     <p class="intro">Comparte la sobremesa con ponentes, organización y participantes. Plazas con inscripción previa.</p>
     <div class="menu">
       <div class="menu-card">
-        <div class="menu-top"><span>Menú</span><b>Viernes, 27 de noviembre · 14:00</b></div>
+        <div class="menu-top"><span>Menú</span><b>Viernes, 27 de noviembre · 14:15</b></div>
         <div class="menu-cols">
           <div class="course" style="--c:var(--orange-t)">
             <h3>Primeros</h3>
