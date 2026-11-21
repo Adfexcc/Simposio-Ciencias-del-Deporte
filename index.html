@@ -79,8 +79,19 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 
 .art::before{content:"";position:absolute;inset:8%;border-radius:50%;background:var(--soft)}
 .count{position:absolute;right:-4px;bottom:6%;background:var(--yellow);color:var(--on-yellow);border-radius:16px;padding:10px 16px;text-align:center;box-shadow:0 10px 24px rgba(40,44,107,.18)}
-.count b{display:block;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
-.count span{font-size:12px;font-weight:600;letter-spacing:.5px}
+.count{padding:12px 14px 10px}
+.cd{display:flex;gap:6px}
+.cd div{background:rgba(255,255,255,.55);border-radius:10px;padding:6px 0 5px;min-width:52px}
+.count b{display:block;font-size:28px;line-height:1;font-variant-numeric:tabular-nums;font-weight:800}
+.cd span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-top:3px}
+.cdl{display:block;font-size:12.5px;font-weight:700;letter-spacing:.4px;margin-top:7px}
+#cd-s{display:inline-block}
+.tick{animation:tick .35s ease-out}
+@keyframes tick{from{transform:translateY(-4px);opacity:.4}to{transform:none;opacity:1}}
+.cd-msg b{font-size:24px}
+@media (max-width:820px){.count{position:relative;right:auto;bottom:auto;margin:-36px auto 0;width:max-content}}
+@media (max-width:480px){.cd div{min-width:46px}.count b{font-size:24px}}
+@media (prefers-reduced-motion:reduce){.tick{animation:none}}
 @media (max-width:820px){.hero .top{grid-template-columns:1fr}.art{width:min(78%,340px);order:-1}}
 
 /* facts */
@@ -288,7 +299,10 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     </div>
     <div class="art">
       <img class="confeti" src="img/sports.png" alt="Ilustración del simposio con balones de fútbol, baloncesto y tenis, raqueta y bate" title="¡Pincha!" role="button" tabindex="0">
-      <div class="count" id="count" hidden><b id="days">—</b><span id="dlabel">días</span></div>
+      <div class="count" id="count" hidden aria-live="off">
+        <div class="cd" id="cdgrid"><div><b id="cd-d">0</b><span>días</span></div><div><b id="cd-h">00</b><span>horas</span></div><div><b id="cd-m">00</b><span>min</span></div><div><b id="cd-s">00</b><span>seg</span></div></div>
+        <span id="dlabel" class="cdl">para el simposio</span>
+      </div>
     </div>
   </div>
   <div class="wrap">
@@ -587,11 +601,26 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
 
 <script>
 (function(){
-  var ev=new Date(2026,10,27,9,30), now=new Date();
-  var d=Math.ceil((new Date(2026,10,27)-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5);
-  var box=document.getElementById('count');
-  if(d>0){document.getElementById('days').textContent=d;document.getElementById('dlabel').textContent=d===1?'día para el simposio':'días para el simposio';box.hidden=false;}
-  else if(d===0){document.getElementById('days').textContent='Hoy';document.getElementById('dlabel').textContent='¡te esperamos!';box.hidden=false;}
+  // Cuenta atrás dinámica hasta el 27/11/2026 09:30 (hora de Madrid)
+  var START=Date.UTC(2026,10,27,8,30), END=Date.UTC(2026,10,27,17,30);
+  var box=document.getElementById('count'),grid=document.getElementById('cdgrid'),lab=document.getElementById('dlabel');
+  var el={d:document.getElementById('cd-d'),h:document.getElementById('cd-h'),m:document.getElementById('cd-m'),s:document.getElementById('cd-s')};
+  function pad(n){return (n<10?'0':'')+n;}
+  function set(k,v){if(el[k].textContent!==v){el[k].textContent=v;if(k==='s'){el.s.classList.remove('tick');void el.s.offsetWidth;el.s.classList.add('tick');}}}
+  function tickCd(){
+    var now=Date.now();box.hidden=false;
+    if(now<START){
+      var t=Math.floor((START-now)/1000),d=Math.floor(t/86400),h=Math.floor(t%86400/3600),m=Math.floor(t%3600/60),sc=t%60;
+      set('d',String(d));set('h',pad(h));set('m',pad(m));set('s',pad(sc));
+      grid.children[0].querySelector('span').textContent=d===1?'día':'días';
+      lab.textContent='para el simposio';return true;
+    }
+    grid.hidden=true;box.classList.add('cd-msg');
+    if(now<END){lab.innerHTML='<b>¡En directo!</b>Hoy en la Facultad';}
+    else{lab.innerHTML='<b>¡Gracias!</b>por venir al simposio';}
+    return false;
+  }
+  if(tickCd()){var iv=setInterval(function(){if(!tickCd())clearInterval(iv);},1000);}
 
   var map=document.getElementById('map'),mn=document.getElementById('mapname'),ps=document.querySelectorAll('.place');
   function pick(el){ps.forEach(function(p){p.setAttribute('aria-pressed',p===el?'true':'false')});map.src='https://maps.google.com/maps?q='+encodeURIComponent(el.dataset.q)+'&z=16&output=embed';mn.textContent=el.dataset.n;}
