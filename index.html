@@ -119,33 +119,6 @@ section.alt{background:var(--soft)}
 .block h2{font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.6px;margin-top:8px}
 .intro{color:var(--muted);max-width:62ch;margin-top:12px;font-size:17px}
 
-
-/* valoración NPS (solo visible el día del evento) */
-#valoracion[hidden],.npsfab[hidden]{display:none!important}
-.nps{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:0 10px 30px rgba(40,44,107,.08)}
-.nps h3{font-size:20px;font-weight:700}
-.nps .q{color:var(--muted);margin-top:4px}
-.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:8px;margin-top:18px}
-.sc{appearance:none;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 0 8px;cursor:pointer;font:inherit;color:var(--fg);display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .12s,border-color .12s,background .12s}
-.sc .f{font-size:28px;line-height:1;filter:grayscale(.35)}
-.sc b{font-size:15px;font-weight:700}
-.sc:hover{transform:translateY(-3px)}
-.sc[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 18%,var(--surface));transform:translateY(-3px) scale(1.06)}
-.sc[aria-pressed="true"] .f{filter:none}
-.ends{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:8px}
-.who{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;align-items:center}
-.who span{font-weight:600;margin-right:4px}
-.chip{appearance:none;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.nps textarea{width:100%;margin-top:18px;min-height:96px;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;font:inherit;background:var(--bg);color:var(--fg);resize:vertical}
-.nps .send{margin-top:16px}
-.nps .send:disabled{opacity:.45;cursor:not-allowed}
-.thanks{text-align:center;padding:18px 0}
-.thanks .big{font-size:64px;line-height:1}
-.thanks h3{margin-top:8px}
-.npsfab{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--orange-t);color:#fff;font-weight:700;border-radius:999px;padding:12px 18px;box-shadow:0 10px 24px rgba(0,0,0,.2);text-decoration:none;font-size:15px}
-@media (max-width:640px){.scale{grid-template-columns:repeat(6,1fr)}.sc .f{font-size:24px}.nps{padding:20px}}
-
 /* programme */
 .prog{margin-top:36px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .ev{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
@@ -350,30 +323,6 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     </div>
   </div>
 </header>
-
-<section class="block" id="valoracion" hidden>
-  <div class="wrap">
-    <div class="eyebrow" style="--c:var(--green-t)">Tu opinión</div>
-    <h2>¿Qué te ha parecido el simposio?</h2>
-    <p class="intro">Es anónimo y tardas 20 segundos. Nos ayuda a mejorar la próxima edición.</p>
-    <form class="nps" id="npsform" novalidate>
-      <div id="npsbody">
-        <h3>Del 0 al 10, ¿recomendarías el simposio a un compañero o compañera?</h3>
-        <p class="q">Pulsa la carita que mejor lo resuma.</p>
-        <div class="scale" id="scale" role="radiogroup" aria-label="Puntuación de 0 a 10"></div>
-        <div class="ends"><span>Nada probable</span><span>Muy probable</span></div>
-        <div class="who" role="group" aria-label="Perfil"><span>Soy:</span>
-          <button type="button" class="chip" data-v="Estudiante">Estudiante</button>
-          <button type="button" class="chip" data-v="Profesional o docente">Profesional o docente</button>
-          <button type="button" class="chip" data-v="Ponente u organización">Ponente u organización</button>
-        </div>
-        <textarea id="npscom" placeholder="¿Qué es lo que más te ha gustado? ¿Qué mejorarías? (opcional)" maxlength="1000"></textarea>
-        <button class="btn primary send" id="npssend" type="submit" disabled>Enviar valoración</button>
-      </div>
-      <div class="thanks" id="npsthanks" hidden><div class="big" id="npsface">🤩</div><h3>¡Gracias por tu valoración!</h3><p class="q">Nos vemos en la próxima edición.</p></div>
-    </form>
-  </div>
-</section>
 
 <section class="block alt" id="programa">
   <div class="wrap">
@@ -648,7 +597,6 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     <p class="made">Hecho con 🩵 por Mindara</p>
   </div>
 </footer>
-<a class="npsfab" id="npsfab" href="#valoracion" hidden>¿Qué te ha parecido? 😊</a>
 <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
 <script>
@@ -710,40 +658,12 @@ footer{padding-block:48px 40px;border-top:1px solid var(--line)}
     }
     requestAnimationFrame(step);
   }
-  window.__burst=burst;
   document.querySelectorAll('.confeti').forEach(function(img){
     img.addEventListener('click',function(e){
       var r=img.getBoundingClientRect();
       burst(e.clientX||r.left+r.width/2, e.clientY||r.top+r.height/2);
     });
     img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();var r=img.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2);}});
-  });
-})();
-</script>
-<script>
-(function(){
-  // Valoración NPS: visible el día del simposio (27/11/2026) y la semana siguiente; vista previa con ?valoracion
-  var FORM={action:'',score:'',profile:'',comment:''}; // Google Form: se rellena al conectar el formulario
-  var OPEN=Date.UTC(2026,10,26,23,0), CLOSE=Date.UTC(2026,11,4,23,0);
-  var preview=/[?&]valoracion\b/.test(location.search), now=Date.now();
-  if(!(preview||(now>=OPEN&&now<CLOSE&&FORM.action)))return;
-  var sec=document.getElementById('valoracion'),fab=document.getElementById('npsfab');sec.hidden=false;fab.hidden=false;
-  var done=false;try{done=localStorage.getItem('npsSimposio2026')==='1';}catch(e){}
-  var F=['😫','😣','😞','😟','🙁','😕','😐','🙂','😊','😄','🤩'];
-  var C=function(n){return n<=6?'var(--red)':n<=8?'var(--yellow)':'var(--green)';};
-  var sc=document.getElementById('scale'),score=null,prof='',send=document.getElementById('npssend');
-  for(var i=0;i<=10;i++){(function(n){var b=document.createElement('button');b.type='button';b.className='sc';b.setAttribute('role','radio');b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',n+' de 10');b.style.setProperty('--c',C(n));b.innerHTML='<span class="f">'+F[n]+'</span><b>'+n+'</b>';b.onclick=function(){score=n;sc.querySelectorAll('.sc').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});send.disabled=false;};sc.appendChild(b);})(i);}
-  document.querySelectorAll('.who .chip').forEach(function(c){c.onclick=function(){prof=prof===c.dataset.v?'':c.dataset.v;document.querySelectorAll('.who .chip').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.v===prof?'true':'false');});};});
-  function thanks(n){done=true;document.getElementById('npsbody').hidden=true;var t=document.getElementById('npsthanks');t.hidden=false;if(n!=null)document.getElementById('npsface').textContent=F[n];fab.hidden=true;}
-  if('IntersectionObserver' in window){new IntersectionObserver(function(en){if(!done)fab.style.display=en[0].isIntersecting?'none':'';}).observe(sec);}
-  if(done)thanks(null);
-  document.getElementById('npsform').addEventListener('submit',function(e){
-    e.preventDefault();if(score==null)return;
-    if(FORM.action){var fd=new URLSearchParams();fd.append(FORM.score,String(score));if(prof&&FORM.profile)fd.append(FORM.profile,prof);var cm=document.getElementById('npscom').value.trim();if(cm&&FORM.comment)fd.append(FORM.comment,cm);
-      fetch(FORM.action,{method:'POST',mode:'no-cors',body:fd}).catch(function(){});}
-    try{if(!preview)localStorage.setItem('npsSimposio2026','1');}catch(e){}
-    thanks(score);
-    var r=sc.getBoundingClientRect();if(window.__burst)window.__burst(r.left+r.width/2,r.top);
   });
 })();
 </script>
